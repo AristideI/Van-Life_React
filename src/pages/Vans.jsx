@@ -6,6 +6,12 @@ export default function Vans() {
   useEffect(() => {
     fetch("/api/vans")
       .then((resp) => resp.json())
-      .then((data) => setVans(data.Vans));
+      .then((data) => setVans(data.vans));
+  }, []);
+
+  const disp = vans.map((elt) => {
+    return <section>Pro</section>;
   });
+
+  return <section>{disp}</section>;
 }
