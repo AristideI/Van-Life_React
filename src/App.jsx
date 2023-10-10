@@ -6,32 +6,31 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Vans from "./pages/Vans";
 import Van from "./pages/Van";
+import HostLayout from "./pages/Host";
+import Layout from "./components/Layout";
+import Dashbord from "./pages/Dashbord";
+import Income from "./pages/Income";
+import HostVans from "./pages/HostVans";
+import Reviews from "./pages/Reviews";
 
 function App() {
   return (
-    <section className="scroller">
-      <BrowserRouter>
-        <header className=" px-[25%] mt-8 flex justify-between items-center">
-          <Link className="font-bold font-serif text-2xl" to="/">
-            Van Life
-          </Link>
-          <nav className="flex justify-between items-center gap-4 font-bold text-xl ">
-            <Link className="hover:underline" to="/about">
-              About
-            </Link>
-            <Link className="hover:underline" to="/vans">
-              Vans
-            </Link>
-          </nav>
-        </header>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/vans" element={<Vans />} />
-          <Route path="/vans/:id" element={<Van />} />
-        </Routes>
-      </BrowserRouter>
-    </section>
+    <BrowserRouter>
+      <Routes>
+        <Route to="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="vans" element={<Vans />} />
+          <Route path="vans/:id" element={<Van />} />
+          <Route path="host" element={<HostLayout />}>
+            <Route index element={<Dashbord />} />
+            <Route path="income" element={<Income />} />
+            <Route path="vans" element={<HostVans />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
